@@ -13,8 +13,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $data=Category::select('name')->get();
-        return response()->json($data,200);
+        $categories=Category::all();
+        return view('category/index',[
+            "categories"=>$categories
+        ]);
     }
 
     /**
