@@ -21,8 +21,15 @@
                     <td>{{$posts->category_id}}</td>
                     <td>{{$posts->title}}</td>
                     <td>{{$posts->content}}</td>
-                    <td><a href="#" class="btn btn-primary">Edit</a>
-                        <a href="#" class="btn btn-danger">Delete</a></td>
+                    <td>
+                        <form method="POST" action="{{route('post.delete',$posts->id)}}">
+                            {{method_field('DELETE')}}
+                            {{csrf_field()}}
+                            <a href="{{ route('post.edit', $posts->id) }}" class="btn btn-primary">Edit</a>
+                            <input type="submit" value="Delete" class="btn btn-danger"/>
+
+                    </form>
+                    </td>
                 </tr>
                     @endforeach
                 </tbody>

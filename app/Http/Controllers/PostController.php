@@ -67,7 +67,10 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post=Post::findorfail($id);
+        return view('post.edit', [
+            'post'=>$post
+        ]);
     }
 
     /**
@@ -79,7 +82,14 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       $post=Post::findorfail($id);
+        $post->category_id=$request->get('category_id');
+        $post->title=$request->get('title');
+        $post->content=$request->get('content');
+
+        $post->save();
+
+        return redirect()->route('post.index');
     }
 
     /**
@@ -90,6 +100,8 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post=Post::findorfail($id);
+        $post->delete();
+        return redirect()->route('post.index');
     }
 }

@@ -66,7 +66,10 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category=Category::findorfail($id);
+        return view('category.edit', [
+            'category'=>$category
+        ]);
     }
 
     /**
@@ -78,7 +81,10 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $category = Category::findorfail($id);
+        $category->name=$request->get('name');
+        $category->save();
+        return redirect()->route('category.index');
     }
 
     /**
@@ -93,8 +99,7 @@ class CategoryController extends Controller
         /*if(!$category)
             abort(404); alternative of the above line with customizable status codes */
         $category->delete();
-        $data=Category::all();
-        return response()->json($data, 200);
+        return redirect()->route('category.index');
     }
 
     public function updateData($id, $name){
