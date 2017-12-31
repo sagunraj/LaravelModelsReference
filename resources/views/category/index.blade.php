@@ -1,7 +1,8 @@
 @extends("layouts/app")
 @section("content")
-    <a href="{{ route('category.create') }}" class="btn btn-primary">Create new category</a>
+
     <div class="container">
+        <a href="{{ route('category.create') }}" class="btn btn-primary">Create new category</a>
         <div class="row">
             <div class="col-sm-12">
                 <table class="table table-responsive table-bordered">
@@ -17,8 +18,15 @@
                         <tr>
                             <td>{{$category->id}}</td>
                             <td>{{$category->name}}</td>
-                            <td><a href="#" class="btn btn-primary">Edit</a>
-                            <a href="#" class="btn btn-danger">Delete</a></td>
+                            <td>
+                            <form method="POST" action="{{route('category.delete',$category->id)}}">
+                                {{method_field('DELETE')}}
+                                {{csrf_field()}}
+                                <a href="{{ route('category.edit', $category->id) }}" class="btn btn-primary">Edit</a>
+                                <input type="submit" value="Delete" class="btn btn-danger"/>
+
+                            </form>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
