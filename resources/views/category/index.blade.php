@@ -3,6 +3,15 @@
 
     <div class="container">
         <a href="{{ route('category.create') }}" class="btn btn-primary">Create new category</a>
+        @if(Session::has('success'))
+        <div class="alert alert-info">
+            {{ Session::get('success') }}
+        </div>
+            @elseif(Session::has('delete'))
+            <div class="alert alert-danger">
+                {{Session::get('delete ')}}
+            </div>
+        @endif
         <div class="row">
             <div class="col-sm-12">
                 <table class="table table-responsive table-bordered">

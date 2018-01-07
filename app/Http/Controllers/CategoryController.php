@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CategoryRequest;
 use App\Model\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class CategoryController extends Controller
 {
@@ -45,7 +46,7 @@ class CategoryController extends Controller
         $category = new Category();
         $category->name=$request->get('name');
         $category->save();
-
+        Session::flash("success", "New Category has been added.");
         return redirect("/category");
 
     }
@@ -89,6 +90,7 @@ class CategoryController extends Controller
         $category = Category::findorfail($id);
         $category->name=$request->get('name');
         $category->save();
+        Session::flash('success', 'Category has been updated.');
         return redirect()->route('category.index');
     }
 
@@ -104,6 +106,7 @@ class CategoryController extends Controller
         /*if(!$category)
             abort(404); alternative of the above line with customizable status codes */
         $category->delete();
+        Session::flash('delete',"Category has been deleted.");
         return redirect()->route('category.index');
     }
 
