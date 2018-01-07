@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\CategoryRequest;
 use App\Model\Category;
 use Illuminate\Http\Request;
 
@@ -35,8 +36,11 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
+        /*$this->validate($request,[
+            'name'=>"required"
+        ]);*/
 //      dd($request->all()); //get all the contents of the request made through POST method
         $category = new Category();
         $category->name=$request->get('name');
@@ -79,8 +83,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoryRequest $request, $id)
     {
+        dd('a');
         $category = Category::findorfail($id);
         $category->name=$request->get('name');
         $category->save();

@@ -4,6 +4,11 @@
         <div class="row">
             <div class="col-md-12">
                 <h1 class="page-header">Edit category</h1>
+                <ul class="list-group">
+                    @foreach($errors->all() as $error)
+                        <li class="list-group-item">{{$error}}</li>
+                    @endforeach
+                </ul>
                 <form action="{{route('category.update', $category->id)}}" method="POST">
                     {{--action="/category/{{$category->id}}"--}}
                     {{method_field('PUT')}}

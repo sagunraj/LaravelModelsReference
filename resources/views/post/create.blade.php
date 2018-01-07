@@ -3,6 +3,12 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+                <h1 class="page-header">Add New Post</h1>
+                <ul class="list-group">
+                    @foreach($errors->all() as $error)
+                        <li class="list-group-item">{{$error}}</li>
+                    @endforeach
+                </ul>
                 <form method="POST" action="{{route('post.index')}}">
                     {{csrf_field()}}
                     <div class="form-group">
