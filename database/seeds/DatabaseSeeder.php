@@ -11,8 +11,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-
+        DB::statement("SET foreign_key_checks=0");
          $this->call(CategorySeeder::class);
          $this->call(PostSeeder::class);
+        DB::statement("SET foreign_key_checks=1");
     }
 }

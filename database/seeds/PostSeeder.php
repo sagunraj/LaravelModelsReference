@@ -14,12 +14,13 @@ class PostSeeder extends Seeder
     {
         $faker = Faker\Factory::create();
         Post::truncate();
-        for($i=1;$i<21;$i++){
+        for($i=1;$i<101;$i++){
             $post = new Post();
             $jobtitle = $faker->jobTitle;
-            $post -> category_id = $faker->randomNumber(3);
+            $post -> category_id = $faker->numberBetween(1,20);
             $post -> title = $jobtitle;
             $post -> content = $faker->realText(200,2);
+            $post -> image = $faker->imageUrl();
             $post -> slug = str_slug($jobtitle);
             $post -> save();
         }
