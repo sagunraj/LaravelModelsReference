@@ -62,7 +62,10 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::findorfail($id);
+        return view('post.show', [
+           'post'=>$post
+        ]);
     }
 
     /**

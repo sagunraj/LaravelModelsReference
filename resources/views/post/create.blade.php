@@ -24,7 +24,7 @@
                         <label>Slug</label>
                         <input type="text" class="form-control" name="slug"/>
                         <label>Content</label><br/>
-                        <textarea class="form-control col-xs-12" name="content"></textarea>
+                        <textarea id="content" name="content"></textarea>
                     </div>
                         <input type="submit" value="Submit" class="btn btn-primary"/>
                 </form>
@@ -32,3 +32,22 @@
         </div>
     </div>
     @endsection
+    @section('scripts')
+        <script src="{{asset('tinymce/js/tinymce/tinymce.min.js')}}"></script>
+        <script>
+        tinymce.init({
+            selector: 'textarea',
+            height: 500,
+            menubar: false,
+            plugins: [
+                'advlist autolink lists link image charmap print preview anchor textcolor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table contextmenu paste code help wordcount'
+            ],
+            toolbar: 'insert | undo redo |  formatselect | bold italic backcolor  | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
+            content_css: [
+                '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
+                '//www.tinymce.com/css/codepen.min.css']
+        });
+    </script>
+        @endsection

@@ -32,7 +32,8 @@ Route::get('/category/{name}/{names}', 'CategoryController@updateName')->name('c
 
 Route::get('/posts', 'PostController@index')->name('post.index');
 Route::get('/posts/create', 'PostController@create')->name('post.create');
-Route::get('posts/{id}/edit', 'PostController@edit')->name('post.edit');
+Route::get('/posts/{id}/edit', 'PostController@edit')->name('post.edit');
+Route::get('/posts/{id}', 'PostController@show')->name('post.show');
 Route::delete('/posts/{id}', 'PostController@destroy')->name('post.delete');
 Route::put('/posts/{id}', 'PostController@update')->name('post.update');
 Route::post('/posts', 'PostController@store')->name('post.store');

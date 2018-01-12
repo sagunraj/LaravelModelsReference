@@ -2,7 +2,7 @@
 @section("content")
 
     <div class="container">
-        <a href="{{ route('category.create') }}" class="btn btn-primary">Create new category</a>
+        <a href="{{ route('category.create') }}" class="btn btn-primary">Create new category</a><hr/>
         @if(Session::has('success'))
         <div class="alert alert-info">
             {{ Session::get('success') }}
