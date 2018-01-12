@@ -18,7 +18,7 @@
                 @foreach($post as $posts)
                 <tr>
                     <td>{{$posts->id}}</td>
-                    <td>{{$posts->category_id}}</td>
+                    <td>{{$posts->category->name}}</td>
                     <td>{{$posts->title}}</td>
                     <td>{{$posts->content}}</td>
                     <td>

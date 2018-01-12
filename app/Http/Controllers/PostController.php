@@ -7,6 +7,7 @@ use App\Http\Requests\PostRequest;
 use App\Model\Category;
 use App\Model\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class PostController extends Controller
 {
@@ -73,8 +74,10 @@ class PostController extends Controller
     public function edit($id)
     {
         $post=Post::findorfail($id);
+        $category = Category::all();
         return view('post.edit', [
-            'post'=>$post
+            'post'=>$post,
+            'category'=>$category
         ]);
     }
 
@@ -90,11 +93,12 @@ class PostController extends Controller
        $post=Post::findorfail($id);
         $post->category_id=$request->get('category_id');
         $post->title=$request->get('title');
+        $post->slug=$request->get('slug');
         $post->content=$request->get('content');
-
+        Session::flash("success", "The post has been updated");
         $post->save();
 
-        return redirect()->route('post.index');
+        return back();
     }
 
     /**

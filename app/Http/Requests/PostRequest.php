@@ -9,7 +9,8 @@ class PostRequest extends FormRequest
     /**
      * Determine if the user is authorized to make this request.
      *
-     * @return bool
+     * @r
+     * return bool
      */
     public function authorize()
     {
@@ -23,7 +24,7 @@ class PostRequest extends FormRequest
      */
     public function rules()
     {
-        /*$method = $this->method();
+        $method = $this->method();
         switch ($method){
             case 'POST':{
                 return [
@@ -34,23 +35,19 @@ class PostRequest extends FormRequest
             }
 
             case 'PUT':{
-                return [
-                    "category_id"=>"required|Numeric",
-                    "title"=>"required|max:255",
-                    "content"=>"required"
-                ];
+                 return[
+            "category_id"=>"required|exists:categories,id",
+            "title"=>"required|max:255",
+            "slug"=>"required|alpha_dash|unique:posts,slug,".$this->segment(2),
+            "content"=>"required|max:4000"
+        ];
             }
 
             default:
                 return [];
-        }*/
+        }
 
-        return[
-            "category_id"=>"required|exists:categories,id",
-            "title"=>"required|max:255",
-            "slug"=>"required|alpha_dash",
-            "content"=>"required|max:4000"
-        ];
+
 
     }
 

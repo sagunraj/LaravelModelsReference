@@ -70,7 +70,11 @@
                 </div>
             </div>
         </nav>
-
+        @if(Session::has('success'))
+            <ul>
+                <li>{{Session::get('success')}}</li>
+            </ul>
+        @endif
         @yield('content')
     </div>
 

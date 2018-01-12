@@ -14,9 +14,20 @@
                     {{csrf_field()}}
                     <div class="form-group">
                         <label>Category ID</label>
-                        <input type="text" class="form-control" name="category_id" value="{{$post->category_id}}" required/>
+                        <select class="form-control" name="category_id">
+                            <option value="0">Select a category</option>
+                                @foreach($category as $categories)
+                                    @if($categories->id==$post->category_id)
+                                        <option value="{{$categories->id}}" selected>{{$categories->name}}</option>
+                                    @else
+                                        <option value="{{$categories->id}}">{{$categories->name}}</option>
+                                @endif
+                                        @endforeach
+                        </select>
                         <label>Title</label>
                         <input type="text" class="form-control" name="title" value="{{$post->title}}" required/>
+                        <label>Slug</label>
+                        <input type="text" class="form-control" name="slug" value="{{$post->slug}}" required/>
                         <label>Content</label><br/>
                         <textarea class="form-control col-xs-12" name="content">{{$post->content}}</textarea>
                     </div>
