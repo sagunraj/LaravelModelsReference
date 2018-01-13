@@ -36,6 +36,7 @@
                     @endforeach
                 </tbody>
             </table>
+            {!! $post->links() !!}
         </div>
     </div>
 </div>
