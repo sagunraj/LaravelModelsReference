@@ -86,7 +86,6 @@ class CategoryController extends Controller
      */
     public function update(CategoryRequest $request, $id)
     {
-        dd('a');
         $category = Category::findorfail($id);
         $category->name=$request->get('name');
         $category->save();

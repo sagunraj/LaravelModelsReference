@@ -36,9 +36,16 @@ Route::middleware('auth')->group(function(){
     Route::put('/posts/{id}', 'PostController@update')->name('post.update');
     Route::post('/posts', 'PostController@store')->name('post.store');
 
+
+
 });
 /*Route::get('/home', 'HomeController@index')->name('home');*/
-
+Route::get('/tags', 'TagsController@index')->name('tag.index');
+Route::get('/tags/create', 'TagsController@create')->name('tag.create');
+Route::put('/tags/{id}', 'TagsController@update')->name('tag.update');
+Route::post('/tags', 'TagsController@store')->name('tag.store');
+Route::get('tags/{id}/edit', 'TagsController@edit')->name('tag.edit');
+Route::delete('tags/{id}', 'TagsController@destroy')->name('tag.delete');
 
 
 Auth::routes();

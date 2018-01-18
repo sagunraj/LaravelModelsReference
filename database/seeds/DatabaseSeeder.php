@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
         DB::statement("SET foreign_key_checks=0");
          $this->call(CategorySeeder::class);
          $this->call(PostSeeder::class);
+         $this->call(TagSeeder::class);
         DB::statement("SET foreign_key_checks=1");
     }
 }
